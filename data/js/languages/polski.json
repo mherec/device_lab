@@ -1,0 +1,24 @@
+{
+    "%start%": "Start",
+    "%dashboard%": "Dashboard",
+    "%devices%": "Urządzenia",
+    "%files%": "Pliki",
+    "%database%": "Baza danych",
+    "%settings%": "Ustawienia",
+    "%logout%": "Wyloguj",
+    "%name%": "Nazwa",
+    "%status%": "Status",
+    "%actions%": "Akcje",
+    "%edit%": "Edytuj",
+    "%delete%": "Usuń",
+    "%add_new%": "Dodaj nowy",
+    "%save%": "Zapisz",
+    "%cancel%": "Anuluj",
+    "%search%": "Szukaj",
+    "%loading%": "Ładowanie...",
+    "%error%": "Błąd",
+    "%success%": "Sukces",
+    "%update_available%": "Dostępna aktualizacja",
+    "%no_data%": "Brak danych do wyświetlenia"
+
+}

@@ -1,0 +1,27 @@
+<div class="topbar">
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick="loadContent('device-content', './data/app/devices/console');">
+        Konsla MODBUS RTU
+    </button>
+</div>
+<div class="divider"></div>
+<div class="main" id="device-content">
+    <table class="min-w-full text-white  border border-gray-200">
+        <thead>
+            <tr class="bg-gray-800">
+                <th class="py-2 px-4 border-b border-gray-200 w-1/2 text-left" data-i18n="%name%"></th>
+                <th class="py-2 px-4 border-b border-gray-200 w-1/2 text-left" data-i18n="%status%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="py-2 px-4 border-b border-gray-200">Modbus WiFi Controller</td>
+                <td class="py-2 px-4 border-b border-gray-200">
+                    <span id="statusButton" class="inline-block px-3 py-1 text-sm font-semibold text-white">
+                        <button class="bg-red-500 text-white font-bold py-2 px-4" id="statusButton">
+                            Offline
+                        </button>
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+</div>
