@@ -10,6 +10,8 @@
     <script src="data/js/db/dexie.js"></script>
     <script src="data/js/js_init.js"></script>
     <script src="data/js/core.js"></script>
+    <script src="data/js/tabulator/tabulator.min.js"></script>
+    <link href="data/js/tabulator/tabulator.min.css" rel="stylesheet">
 
 </head>
 
@@ -45,8 +47,8 @@
 
                 </div>
                 <div class="time-block">
-                    <div class="time">09:41</div>
-                    <div class="muted">PL</div>
+                    <div class="time" id="_time">--:--</div>
+                    <div class="muted"> </div>
                 </div>
             </div>
         </header>
@@ -65,11 +67,11 @@
 
             <nav class="nav">
                 <a href="#" class="active" onClick="loadContent(`main-content`, `./data/app/home`);">
-                    <div class="ic">🏠</div>
+                    <div class="ic">📊</div>
                     <p data-i18n="%dashboard%"></p>
                 </a>
                 <a href="#" onClick="loadContent(`main-content`, `./data/app/devices`);">
-                    <div class="ic">🗂️</div>
+                    <div class="ic">🔌</div>
                     <p data-i18n="%devices%"> </p>
                 </a>
                 <a href="#" onClick="loadContent(`main-content`, `./data/app/files`);">
@@ -77,7 +79,7 @@
                     <p data-i18n="%files%"></p>
                 </a>
                 <a href="#" onClick="loadContent(`main-content`, `./data/app/database`);">
-                    <div class="ic">📊</div>
+                    <div class="ic">💽</div>
                     <p data-i18n="%database%"></p>
                 </a>
                 <a href="#" onClick="loadContent(`main-content`, `./data/app/config`);">
@@ -106,7 +108,7 @@
         </main>
     </div>
 
-    <script src="data/js/js_end.js"></script>
+    <script src="data/js/js_end.js?v=1.1"></script>
     <script>
         loadContent("main-content", "./data/app/home");
     </script>

@@ -1,9 +1,15 @@
 @echo off
-echo Uruchamianie serwera w tle na porcie 8001...
-start /B python -m http.server 8001
+echo Uruchamianie serwera Livereload na porcie 8001...
+start /B python server.py
 
 timeout /t 2 >nul
 
 echo Uruchamianie Chromium w trybie app...
-:: Zakładam, że chrome-win jest w tym samym katalogu co skrypt
-start "" "%~dp0chrome-win\chrome.exe" --app=http://localhost:8001 --disable-component-update --no-first-run --user-data-dir="%~dp0chrome-profile" --disable-default-apps --start-maximized
+start "" "C:\Program Files\Google\Chrome\Application\chrome.exe" ^
+   --app=http://localhost:8001 ^
+   --user-data-dir="%USERPROFILE_DIR%" ^
+   --disable-component-update ^
+   --no-first-run ^
+   --disable-default-apps ^
+   --disable-cache ^
+   --start-maximized

@@ -1,18 +1,162 @@
    /* --------- Variables & base --------- */
-   :root {
-       --bg: #0f1724;
-       /* dark desktop */
-       --panel: rgba(255, 255, 255, 0.06);
-       --glass: rgba(255, 255, 255, 0.04);
-       --accent: linear-gradient(90deg, #0ea5e9, #7c3aed);
-       --muted: #9aa4b2;
-       --glass-border: rgba(255, 255, 255, 0.06);
-       --shadow: 0 6px 18px rgba(2, 6, 23, 0.65);
-       --radius: 12px;
-       --sidebar-width: 260px;
-       --topbar-height: 56px;
-       --font-stack: "Segoe UI", Roboto, "Helvetica Neue", Arial, system-ui;
-   }
+   /* --------- Variables & base (już masz) --------- */
+:root {
+    --bg: #0f1724;
+    --panel: rgba(255, 255, 255, 0.06);
+    --glass: rgba(255, 255, 255, 0.04);
+    --accent: linear-gradient(90deg, #0ea5e9, #7c3aed);
+    --muted: #9aa4b2;
+    --glass-border: rgba(255, 255, 255, 0.06);
+    --shadow: 0 6px 18px rgba(2, 6, 23, 0.65);
+    --radius: 12px;
+    --sidebar-width: 260px;
+    --topbar-height: 56px;
+    --font-stack: "Segoe UI", Roboto, "Helvetica Neue", Arial, system-ui;
+}
+
+/* --------- Dodaj te style do istniejącego CSS --------- */
+
+/* Kontener zakładek */
+._dashboard-tabs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+/* Pojedyncza zakładka */
+._dashboard-tab {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+._dashboard-tab:hover {
+    border-color: rgba(255, 255, 255, 0.08);
+    transform: translateY(-1px);
+}
+
+/* Nagłówek zakładki */
+._dashboard-tab-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease;
+}
+
+._dashboard-tab-header:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* Lewa strona nagłówka (ikona + tytuł) */
+._dashboard-tab-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    color: white;
+    font-size: 15px;
+}
+
+/* Ikona zakładki */
+._dashboard-tab-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    color: white;
+    font-size: 14px;
+}
+
+/* Kolory dla poszczególnych zakładek */
+._dashboard-tab-alerts ._dashboard-tab-icon {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+._dashboard-tab-works ._dashboard-tab-icon {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+._dashboard-tab-planning ._dashboard-tab-icon {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+._dashboard-tab-notes ._dashboard-tab-icon {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+/* Strzałka rozwijania */
+._dashboard-tab-arrow {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--muted);
+}
+
+._dashboard-tab.active ._dashboard-tab-arrow {
+    transform: rotate(180deg);
+    color: white;
+}
+
+/* Zawartość zakładki */
+._dashboard-tab-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(255, 255, 255, 0.01);
+}
+
+._dashboard-tab.active ._dashboard-tab-content {
+    max-height: 500px; /* Dostosuj według potrzeb */
+}
+
+/* Wewnętrzna zawartość */
+._dashboard-tab-inner {
+    padding: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* Placeholder dla ładowania danych */
+._dashboard-tab-placeholder {
+    color: var(--muted);
+    font-size: 14px;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Stan aktywnej zakładki */
+._dashboard-tab.active {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02));
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Loader dla zakładek */
+._dashboard-tab-loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+}
+
+._dashboard-tab-loader {
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    border-top: 4px solid #3b82f6;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: _dashboard-spin 1s linear infinite;
+}
+
+@keyframes _dashboard-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 
    * {
        box-sizing: border-box
@@ -248,8 +392,11 @@
    }
 
    .time {
-       font-weight: 600;
-       color: var(--muted)
+       font-weight: 650;
+       color: var(--muted);
+       font-size: 32px;
+       color: white;
+       padding: 0 10px 0 10px;
    }
 
    /* responsive */

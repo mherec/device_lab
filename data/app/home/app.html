@@ -1,25 +1,70 @@
-<div class="todo">
-    <div class="todo-header">
-        <div class="todo-title  muted">To-Do List</div>
-
-    </div>
-    <div class="todo-body text-white">
-        <div class="todo-item">
-            <label for="task1">Rozbudować funkcje "urządzenia"</label>
+<div class="_dashboard-tabs-container">
+    <!-- Alerty (będą domyślnie otwarte przez JavaScript) -->
+    <div class="_dashboard-tab _dashboard-tab-alerts">
+        <div class="_dashboard-tab-header">
+            <div class="_dashboard-tab-title">
+                <div class="_dashboard-tab-icon">!</div>
+                <span>Alerty</span>
+            </div>
+            <div class="_dashboard-tab-arrow">▼</div>
         </div>
-        <div class="todo-item">
-            <label for="task2">Przygotować magazynowanie danych i plików</label>
-        </div>
-
-        <div class="todo-item">
-            <label for="task4">Przygotować raport miesięczny</label>
-        </div>
-        <div class="todo-item">
-            <label for="task5">Zorganizować spotkanie zespołu</label>
-        </div>
-        <div class="todo-item">
-            <label for="task6">Przeanalizować nowe funkcje</label>
+        <div class="_dashboard-tab-content">
+            <div class="_dashboard-tab-inner">
+                <div class="_dashboard-tab-placeholder">
+                    <div class="_dashboard-tab-loader-container">
+                        <div class="_dashboard-tab-loader"></div>
+                    </div>
+                    <p>Ładowanie alertów...</p>
+                </div>
+            </div>
         </div>
     </div>
 
+    <!-- Aktualne prace -->
+    <div class="_dashboard-tab _dashboard-tab-works">
+        <div class="_dashboard-tab-header">
+            <div class="_dashboard-tab-title">
+                <div class="_dashboard-tab-icon">⚒</div>
+                <span>Aktualne prace</span>
+            </div>
+            <div class="_dashboard-tab-arrow">▼</div>
+        </div>
+        <div class="_dashboard-tab-content">
+            <div class="_dashboard-tab-inner">
+                <div class="_dashboard-tab-placeholder">Zawartość będzie ładowana dynamicznie</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Planowanie -->
+    <div class="_dashboard-tab _dashboard-tab-planning">
+        <div class="_dashboard-tab-header">
+            <div class="_dashboard-tab-title">
+                <div class="_dashboard-tab-icon">📅</div>
+                <span>Planowanie</span>
+            </div>
+            <div class="_dashboard-tab-arrow">▼</div>
+        </div>
+        <div class="_dashboard-tab-content">
+            <div class="_dashboard-tab-inner">
+                <div class="_dashboard-tab-placeholder">Zawartość będzie ładowana dynamicznie</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notatki -->
+    <div class="_dashboard-tab _dashboard-tab-notes">
+        <div class="_dashboard-tab-header">
+            <div class="_dashboard-tab-title">
+                <div class="_dashboard-tab-icon">📝</div>
+                <span>Notatki</span>
+            </div>
+            <div class="_dashboard-tab-arrow">▼</div>
+        </div>
+        <div class="_dashboard-tab-content">
+            <div class="_dashboard-tab-inner">
+                <div class="_dashboard-tab-placeholder">Zawartość będzie ładowana dynamicznie</div>
+            </div>
+        </div>
+    </div>
 </div>
