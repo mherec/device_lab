@@ -18,7 +18,6 @@ app = {
             })
                 .then(response => {
                     if (response.type === 'opaque') {
-                        // Request doszedł, ale nie możemy przeczytać odpowiedzi
                         modbusControllerStatus.classList.remove('bg-red-500');
                         modbusControllerStatus.classList.add('bg-green-500');
                         modbusControllerStatus.innerText = 'Online';

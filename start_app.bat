@@ -1,15 +1,43 @@
 @echo off
-echo Uruchamianie serwera Livereload na porcie 8001...
-start /B python server.py
+chcp 65001 >nul
+title Dashboard System
 
-timeout /t 2 >nul
+echo =================================
+echo    Uruchamianie Dashboard System
+echo =================================
 
-echo Uruchamianie Chromium w trybie app...
+echo Sprawdzanie zaleznosci...
+python -c "import flask, sqlite3" >nul 2>&1
+if errorlevel 1 (
+    echo BLAD: Brak wymaganych bibliotek
+    pause
+    exit /b 1
+)
+
+echo OK: Wszystkie zaleznosci sa dostepne
+
+echo Sprawdzanie bazy danych...
+if not exist "dashboard.db" (
+    echo Inicjalizacja bazy danych...
+    python init_database.py
+) else (
+    echo OK: Baza danych istnieje
+)
+
+echo Uruchamianie serwera...
+echo Serwer: http://localhost:8001
+echo.
+
+timeout /t 1 >nul
+
 start "" "C:\Program Files\Google\Chrome\Application\chrome.exe" ^
    --app=http://localhost:8001 ^
-   --user-data-dir="%USERPROFILE_DIR%" ^
-   --disable-component-update ^
-   --no-first-run ^
-   --disable-default-apps ^
-   --disable-cache ^
-   --start-maximized
+   --disable-features=ThirdPartyStoragePartitioning ^ 
+   --user-data-dir="%TEMP%\dashboard_app"
+
+echo System gotowy!
+python server.py
+
+echo.
+echo Serwer zatrzymany
+pause

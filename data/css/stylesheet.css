@@ -1,5 +1,10 @@
-   /* --------- Variables & base --------- */
-   /* --------- Variables & base (już masz) --------- */
+html{
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco,
+               "Roboto Mono", "Segoe UI Mono", "Oxygen Mono",
+               "Ubuntu Monospace", "Source Code Pro",
+               "Droid Sans Mono", monospace;
+}
+
 :root {
     --bg: #0f1724;
     --panel: rgba(255, 255, 255, 0.06);
@@ -13,18 +18,14 @@
     --topbar-height: 56px;
     --font-stack: "Segoe UI", Roboto, "Helvetica Neue", Arial, system-ui;
 }
-
-/* --------- Dodaj te style do istniejącego CSS --------- */
-
-/* Kontener zakładek */
+ 
 ._dashboard-tabs-container {
     display: flex;
     flex-direction: column;
     gap: 12px;
     margin-top: 16px;
 }
-
-/* Pojedyncza zakładka */
+ 
 ._dashboard-tab {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
     border: 1px solid var(--glass-border);
@@ -38,8 +39,7 @@
     border-color: rgba(255, 255, 255, 0.08);
     transform: translateY(-1px);
 }
-
-/* Nagłówek zakładki */
+ 
 ._dashboard-tab-header {
     display: flex;
     align-items: center;
@@ -53,8 +53,7 @@
 ._dashboard-tab-header:hover {
     background: rgba(255, 255, 255, 0.02);
 }
-
-/* Lewa strona nagłówka (ikona + tytuł) */
+ 
 ._dashboard-tab-title {
     display: flex;
     align-items: center;
@@ -63,8 +62,7 @@
     color: white;
     font-size: 15px;
 }
-
-/* Ikona zakładki */
+ 
 ._dashboard-tab-icon {
     width: 32px;
     height: 32px;
@@ -75,8 +73,7 @@
     color: white;
     font-size: 14px;
 }
-
-/* Kolory dla poszczególnych zakładek */
+ 
 ._dashboard-tab-alerts ._dashboard-tab-icon {
     background: linear-gradient(135deg, #ef4444, #dc2626);
 }
@@ -92,8 +89,7 @@
 ._dashboard-tab-notes ._dashboard-tab-icon {
     background: linear-gradient(135deg, #f59e0b, #d97706);
 }
-
-/* Strzałka rozwijania */
+ 
 ._dashboard-tab-arrow {
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     color: var(--muted);
@@ -103,17 +99,17 @@
     transform: rotate(180deg);
     color: white;
 }
-
-/* Zawartość zakładki */
+ 
 ._dashboard-tab-content {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     background: rgba(255, 255, 255, 0.01);
+    overflow-y: auto;
 }
 
 ._dashboard-tab.active ._dashboard-tab-content {
-    max-height: 500px; /* Dostosuj według potrzeb */
+    max-height: 900px; 
 }
 
 /* Wewnętrzna zawartość */
@@ -171,7 +167,31 @@
        -webkit-font-smoothing: antialiased
    }
 
-   /* --------- layout --------- */
+::-webkit-scrollbar {
+  width: 15px;  
+  height: 15px;  
+}
+
+::-webkit-scrollbar-track {
+  background: #1e1e1e; 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555;    
+  border-radius: 10px;
+  border: 2px solid #1e1e1e;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #888;     
+}
+ 
+* {
+  scrollbar-width: thin;   
+  scrollbar-color: #555 #1e1e1e;
+}
+
    .app {
        height: 100vh;
        display: grid;
@@ -196,6 +216,12 @@
        box-shadow: var(--shadow);
        padding: 8px 14px;
        border-radius: calc(var(--radius) - 4px);
+       
+   }
+
+   .top-fixed{
+    position: fixed;
+    width: calc(100% - 35px);
    }
 
    /* left cluster (menu) */
@@ -206,7 +232,7 @@
    }
 
    .start-btn {
-       display: inline-flex;
+       display: flex;
        align-items: center;
        gap: 10px;
        padding: 8px 12px;
@@ -255,6 +281,7 @@
    }
 
    .icon-btn {
+       position: relative;
        width: 42px;
        height: 42px;
        display: inline-grid;
@@ -282,6 +309,9 @@
        flex-direction: column;
        gap: 10px;
        overflow: auto;
+       position: fixed;
+       top: 93px;
+       width: 268px;
    }
 
    .brand {
@@ -347,8 +377,7 @@
        border-left: 3px solid #7c3aed;
        padding-left: 9px
    }
-
-   /* Main content / workspace */
+ 
    .main {
        grid-area: main;
        padding: 18px;
@@ -359,8 +388,7 @@
        overflow: auto;
        min-height: calc(100vh - var(--topbar-height) - 250px);
    }
-
-   /* Cards inside main */
+ 
    .workspace-grid {
        display: grid;
        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -385,8 +413,7 @@
        color: var(--muted);
        font-size: 13px
    }
-
-   /* small helpers */
+ 
    .muted {
        color: var(--muted)
    }
@@ -398,8 +425,7 @@
        color: white;
        padding: 0 10px 0 10px;
    }
-
-   /* responsive */
+ 
    @media (max-width:900px) {
        .app {
            grid-template-columns: 1fr;
@@ -410,21 +436,18 @@
            display: none
        }
    }
-
-   /* CSS */
+ 
    .loader-container {
        display: flex;
        justify-content: center;
        align-items: center;
        height: 100px;
-       /* wysokość obszaru wczytywania */
+ 
    }
 
    .loader {
-       border: 8px solid #f3f3f3;
-       /* jasne tło */
-       border-top: 8px solid #3498db;
-       /* kolor obracającej się części */
+       border: 8px solid #f3f3f3; 
+       border-top: 8px solid #3498db; 
        border-radius: 50%;
        width: 60px;
        height: 60px;
@@ -440,3 +463,176 @@
            transform: rotate(360deg);
        }
    }
+
+   .dashboard-title{
+    font-size: 22px;
+    font-weight: 700;
+   }
+   .dashboard-alert-time{
+    font-size: 10px;
+    color: #888;
+   }
+
+   .dashboard-alert{
+    position: relative;
+    color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+   }
+ 
+   .dashboard-alert-regular{ 
+    border: 1px solid rgb(103, 255, 103);
+    border-radius: 5px;
+   }
+
+   .dashboard-alert-error{ 
+    border: 1px solid rgb(228, 67, 67);
+   }
+
+   .dashboadr-alert-nothing{
+    border: 1px solid rgb(94, 94, 94);
+    border-radius: 5px;
+   }
+ .dashboard-alert-close {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: rgb(228, 67, 67);
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+    line-height: 18px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.hidden{
+    display: none;
+}
+.text-red-50{
+    color: red;
+    font-size: x-large;
+}
+
+.console-messages { 
+  color: #ffffff; 
+  height: 24rem; 
+  overflow-y: auto; 
+  margin-bottom: 0.5rem;  
+}
+.text-white {
+    color: white;
+}
+.text-blue-700{
+    color: #3498db;
+}
+.sent{
+    color: #555;
+}
+
+.flex {
+    display: flex;
+}
+.relative {
+    position: relative;
+}
+.flex-col{
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+}
+.justify-between{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+}
+.console {
+    width: 100%;
+}
+button {
+    color: black;
+}
+.console-input{
+    width: 100%;
+}
+#console-send-button{
+ color: #0f1724;
+}
+#console-input-field{
+    width: 100%;
+}
+.min-w-full{
+    width: 100%;
+}
+.border{
+    border: 1px solid white;
+}
+.border-gray-200{
+    border-color: #888;
+}
+.text-left{
+ float: left;
+ text-align: left;
+}
+.w-1-2{
+    width: 50%;
+}
+.bg-red-500{
+    background-color: rgb(248, 46, 46)!important;
+}
+.bg-green-500{
+    background-color: #059669;
+}
+#statusButton{ 
+    padding: 10px;
+}
+.h-50{
+    height: 30px;
+}
+.p-10{
+ padding: 10px;
+}
+.border-b{
+    border-bottom: 1px solid gray;
+}
+.bg-blue-500{
+    background-color: #0ea5e9;
+}
+.bg-blue-500:hover{
+    background-color: #0c5b7f;
+}
+.button-options{
+    border: 0px solid white;
+    background-color: rgb(74, 85, 104); 
+    color: white; 
+    border: none; 
+    padding: 10px 15px; 
+    border-radius: 6px; 
+    cursor: pointer; 
+    transition: background-color 0.2s ease 0s; 
+    font-weight: 500; white-space: nowrap;
+}
+.base-btn{
+    width: 70px;
+    height: 40px;
+}
+.ware-menu{
+    margin-bottom: 10px;
+
+}
+#alerts_counter{
+    position: absolute;
+    right: -2px;
+    bottom: -10px;
+    font-weight: 700;
+    color: red;
+    font-size: 24px;
+}

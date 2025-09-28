@@ -1,29 +1,21 @@
 appInitUpdate();
 
 app = {
-    ws: null, // <- ws przechowywane globalnie w obiekcie
+    ws: null,
 
     init: function () {
 
         const consoleElement = document.getElementById('console-input-field');
         const clearButton = document.getElementById('clear-console-button');
-        // ewent listener czyszczenia konsoli on click
         clearButton.onclick = () => {
             const output = document.getElementById('console-messages');
             output.innerHTML = '';
         }
-
-
-
-
-        // Jeśli istnieje stare połączenie, zamknij je na siłę
         if (this.ws) {
             this.ws.close();
             this.ws = null;
             // addMessage('[System] Stare połączenie WebSocket zostało zamknięte', 'text-red-400');
         }
-
-        // Tworzymy nowe połączenie
         this.ws = new WebSocket('ws://control.local:81/');
 
         this.ws.onopen = () => {
@@ -44,7 +36,6 @@ app = {
 
             if (hexData && this.ws && this.ws.readyState === WebSocket.OPEN) {
                 this.ws.send(hexData);
-                // addMessage('[SENT] ' + hexData, 'sent');
                 hexInput.value = '';
             }
         };
@@ -87,11 +78,8 @@ app = {
                 'Moduł Kontroli Carel': '0106000000010001F9F8'
             },
         }
-        // generowanie tabeli na podstawie obiektu menuOptionsObiect w id table-command
         function generateMenuTable(menuObject, parentElement) {
-            parentElement.innerHTML = ''; // Clear previous content
-
-            // Stylizacja kontenera menu
+            parentElement.innerHTML = '';
             parentElement.style.display = 'flex';
             parentElement.style.flexWrap = 'wrap';
             parentElement.style.gap = '10px';
@@ -104,7 +92,6 @@ app = {
                 menuItem.style.position = 'relative';
 
                 const button = document.createElement('button');
-                // Stylizacja przycisku
                 button.style.backgroundColor = '#4a5568';
                 button.style.color = 'white';
                 button.style.border = 'none';
@@ -120,7 +107,6 @@ app = {
 
                 if (typeof menuObject[key] === 'object') {
                     const subMenu = document.createElement('div');
-                    // Stylizacja podmenu - DOMYŚLNIE UKRYTE
                     subMenu.style.position = 'absolute';
                     subMenu.style.top = '100%';
                     subMenu.style.left = '0';
@@ -136,17 +122,13 @@ app = {
 
                     menuItem.appendChild(subMenu);
 
-                    // Event do pokazywania/ukrywania podmenu
                     button.addEventListener('click', (e) => {
                         e.stopPropagation();
-                        // Zamknij wszystkie inne podmenu
                         document.querySelectorAll('.submenu').forEach(item => {
                             if (item !== subMenu && item.style.display === 'flex') {
                                 item.style.display = 'none';
                             }
                         });
-
-                        // Przełącz bieżące podmenu
                         if (subMenu.style.display === 'none' || subMenu.style.display === '') {
                             subMenu.style.display = 'flex';
                         } else {
@@ -154,19 +136,14 @@ app = {
                         }
                     });
 
-                    // Rekurencyjne generowanie podmenu
                     generateMenuTable(menuObject[key], subMenu);
-
-                    // Oznacz elementy podmenu dla łatwiejszego zarządzania
                     subMenu.classList.add('submenu');
                 } else {
-                    // Event do wysyłania wiadomości
                     button.addEventListener('click', () => {
                         if (app.ws && app.ws.readyState === WebSocket.OPEN) {
                             app.ws.send(menuObject[key]);
                             addMessage('[SENT] ' + menuObject[key], 'sent');
 
-                            // Zamknij wszystkie podmenu po wybraniu opcji
                             document.querySelectorAll('.submenu').forEach(item => {
                                 item.style.display = 'none';
                             });
@@ -175,8 +152,6 @@ app = {
                         }
                     });
                 }
-
-                // Efekt hover dla przycisku
                 button.addEventListener('mouseenter', () => {
                     button.style.backgroundColor = '#2d3748';
                 });
@@ -187,8 +162,6 @@ app = {
 
                 parentElement.appendChild(menuItem);
             }
-
-            // Zamknij menu po kliknięciu gdziekolwiek indziej
             document.addEventListener('click', (e) => {
                 if (!parentElement.contains(e.target)) {
                     document.querySelectorAll('.submenu').forEach(item => {
@@ -204,8 +177,6 @@ app = {
             });
         }
 
-
-        // Wywołaj tę funkcję po załadowaniu strony, aby ukryć wszystkie podmenu
         document.addEventListener('DOMContentLoaded', hideAllSubmenus);
 
         const tableCommandElement = document.getElementById('table-command');

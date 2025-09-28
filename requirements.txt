@@ -1,0 +1,17 @@
+# 🌐 Flask - główny serwer webowy
+Flask==2.3.3
+
+# 🔄 CORS dla Flask (potrzebne do komunikacji API)
+flask-cors==4.0.0
+
+# 🔄 Livereload - automatyczne odświeżanie podczas developmentu
+livereload==2.6.3
+
+# ⚡ Gunicorn - serwer produkcyjny (opcjonalnie)
+gunicorn==21.2.0
+
+# 📊 Dodatkowe narzędzia (opcjonalnie)
+click==8.1.7
+Jinja2==3.1.2
+Werkzeug==2.3.7
+itsdangerous==2.1.2
