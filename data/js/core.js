@@ -11,7 +11,7 @@ function appInitUpdate() {
     }
 }
 
-let translations = {}; // <- tu przechowamy wczytane tłumaczenia
+let translations = {}; // <- tłumaczenia
 
 async function loadTranslations() {
     try {

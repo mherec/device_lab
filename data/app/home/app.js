@@ -78,7 +78,6 @@ app = {
 
         window.dashboardReadAlerts = function () {
             getEndpointData("api/alerts").then(data => {
-                console.log(data.data)
                 renderMessages(data.data, "alerty");
 
             });
@@ -92,7 +91,3 @@ app = {
 
 
 }
-
-apiRequest(`/api/alerts/1/read`, "POST", { read: 0 });
-apiRequest(`/api/alerts/2/read`, "POST", { read: 0 });
-apiRequest(`/api/alerts/3/read`, "POST", { read: 0 });

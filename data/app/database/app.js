@@ -16,6 +16,7 @@ app = {
             getEndpointData("api/warehouse").then(data => {
 
                 const table = new Tabulator("#ware-table", {
+                    theme: "modern",
                     height: "800px",
                     layout: "fitColumns",
                     columns: [

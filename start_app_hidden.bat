@@ -1,8 +1,11 @@
 @echo off
 chcp 65001 >nul
 title Dashboard System
-mode con:cols=80 lines=10
 
+:: Ukryj okno konsoli
+powershell -WindowStyle Hidden -Command ""
+
+:: Reszta kodu bez zmian
 echo =================================
 echo    Uruchamianie Dashboard System
 echo =================================
@@ -11,7 +14,7 @@ echo Sprawdzanie zaleznosci...
 python -c "import flask, sqlite3" >nul 2>&1
 if errorlevel 1 (
     echo BLAD: Brak wymaganych bibliotek
-    pause
+    msg * "BLAD: Brak wymaganych bibliotek Pythona"
     exit /b 1
 )
 
@@ -37,10 +40,6 @@ start "" "C:\Program Files\Google\Chrome\Application\chrome.exe" ^
    --user-data-dir="%TEMP%\dashboard_app"
 
 echo System gotowy!
-
-:: Minimalizuj okno konsoli
-powershell -window minimized -command ""
-
 python server.py
 
 echo.
