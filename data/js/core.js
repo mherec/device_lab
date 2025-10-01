@@ -1,6 +1,11 @@
 const language = "polski";
 const pin = "2580";
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    loockScreen();
+});
+
 function appInitUpdate() {
     if (window.app) {
         for (let key in app) {

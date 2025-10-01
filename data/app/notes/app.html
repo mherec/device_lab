@@ -1,0 +1,85 @@
+<div class="notes-container">
+    <!-- Panel boczny z listą notatek -->
+    <div class="notes-sidebar">
+        <div class="sidebar-header">
+            <h2>📝 Moje Notatki</h2>
+            <button id="newNoteBtn" class="btn-new">+ Nowa</button>
+        </div>
+        <div class="notes-list" id="notesList">
+            <!-- Lista notatek będzie ładowana dynamicznie -->
+        </div>
+    </div>
+
+    <!-- Główny obszar edycji -->
+    <div class="notes-main">
+        <div id="noNoteSelected" class="no-note">
+            <div class="placeholder">
+                <h3>Wybierz notatkę z listy lub utwórz nową</h3>
+                <p>Kliknij "+ Nowa" aby rozpocząć</p>
+            </div>
+        </div>
+
+        <!-- Pływający edytor (ukryty na początku) -->
+        <div id="editorContainer" class="editor-container" style="display: none;">
+            <div class="notepadTitle">
+                <input type="text" class="notepadTitleString" id="noteTitle" value="Notatka">
+                <div class="title-buttons">
+                    <button id="saveNoteBtn" class="button-options">💾 Zapisz</button>
+                    <button id="deleteNoteBtn" class="button-delete">🗑️ Usuń</button>
+                    <button id="closeEditorBtn" class="button-close">✕ Zamknij</button>
+                </div>
+            </div>
+
+            <div id="toolbar" class="toolbar">
+                <button onclick="execCmd('bold')"><b>B</b></button>
+                <button onclick="execCmd('italic')"><i>I</i></button>
+                <button onclick="execCmd('underline')"><u>U</u></button>
+                <button onclick="execCmd('insertUnorderedList')">• Li</button>
+
+                <select onchange="execCmdWithValue('fontSize', this.value)">
+                    <option value="">Rozmiar</option>
+                    <option value="1">Mały (8px)</option>
+                    <option value="2">Normalny (10px)</option>
+                    <option value="3">Średni (12px)</option>
+                    <option value="4">Duży (14px)</option>
+                    <option value="5">B.duży (18px)</option>
+                    <option value="6">Ogromny (24px)</option>
+                    <option value="7">XXL (36px)</option>
+                </select>
+
+                <select onchange="execCmdWithValue('foreColor', this.value)" style="margin-left: 15px;">
+                    <option value="#333333">Text Czarny</option>
+                    <option value="red">Czerwony</option>
+                    <option value="blue">Niebieski</option>
+                    <option value="green">Zielony</option>
+                    <option value="purple">Fioletowy</option>
+                    <option value="orange">Pomarańczowy</option>
+                </select>
+
+                <select onchange="execCmdWithValue('hiliteColor', this.value)">
+                    <option value="transparent">Tło Brak</option>
+                    <option value="yellow">Żółte</option>
+                    <option value="lightblue">Jasnoniebieskie</option>
+                    <option value="lightgreen">Jasnozielone</option>
+                    <option value="lightpink">Różowe</option>
+                </select>
+
+                <select onchange="setHeading(this.value)">
+                    <option value="">Nagłówek</option>
+                    <option value="h1">H1 - Główny</option>
+                    <option value="h2">H2 - Średni</option>
+                    <option value="h3">H3 - Mały</option>
+                    <option value="p">Paragraf</option>
+                </select>
+
+                <button onclick="execCmd('justifyLeft')">←</button>
+                <button onclick="execCmd('justifyCenter')">↔</button>
+                <button onclick="execCmd('justifyRight')">→</button>
+                <button onclick="execCmd('removeFormat')">Wyczyść</button>
+                <button onclick="addLink()">🔗 Link</button>
+            </div>
+
+            <div id="textEditor" contenteditable="true" class="text-editor"></div>
+        </div>
+    </div>
+</div>

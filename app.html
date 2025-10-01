@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html data-theme="night" lang="pl">
+<html>
 
 <head>
     <meta charset="UTF-8" />
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-eval'"> -->
     <title>WSM</title>
-    <link rel="stylesheet" href="./data/css/stylesheet.css?v=2.72" />
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.snow.css" rel="stylesheet">
-    <link rel="stylesheet" href="./data/css/quill.snow.css" />
+    <link rel="stylesheet" href="./data/css/stylesheet.css?v=2.74" />
     <script src="data/js/js_init.js?v=1"></script>
-    <script src="data/js/core.js?v=2.22"></script>
+    <script src="data/js/core.js?v=2.23"></script>
     <script src="data/js/tabulator/tabulator.min.js"></script>
-    <script src="data/js/quill.js"></script>
     <link href="data/js/tabulator/tabulator.min.css?v=0.1" rel="stylesheet">
 
 </head>
@@ -28,17 +23,17 @@
                     </svg>
                     <span class="start-label" data-i18n="%start%"></span>
                 </div>
-                <div class="search-bar text-white" role="search">
+                <!-- <div class="search-bar text-white" role="search">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                         <path d="M23.111 20.058l-4.977-4.977c.965-1.52 1.523-3.322 1.523-5.251 0-5.42-4.409-9.83-9.829-9.83-5.42 0-9.828 4.41-9.828 9.83s4.408 9.83 9.829 9.83c1.834 0 3.552-.505 5.022-1.383l5.021 5.021c2.144 2.141 5.384-1.096 3.239-3.24zm-20.064-10.228c0-3.739 3.043-6.782 6.782-6.782s6.782 3.042 6.782 6.782-3.043 6.782-6.782 6.782-6.782-3.043-6.782-6.782zm2.01-1.764c1.984-4.599 8.664-4.066 9.922.749-2.534-2.974-6.993-3.294-9.922-.749z" fill="white" />
                     </svg>
                     <input placeholder="Szukaj (Ctrl+K)" aria-label="Szukaj" />
-                </div>
+                </div> -->
             </div>
 
 
             <div class="top-right">
-                <div class="icon-btn" title="Notatki" aria-hidden="true" onClick="loadContent(`main-content`, `./data/app/notepad`);" id="alerts-icon-re">
+                <div class="icon-btn" title="Notatki" aria-hidden="true" onClick="loadContent(`main-content`, `./data/app/notes`);" id="alerts-icon-re">
                     <div class="_dashboard-tab-icon">📝</div>
                 </div>
                 <div class="icon-btn" title="Powiadomienia" aria-hidden="true" onClick="loadContent(`main-content`, `./data/app/alerts`);" id="alerts-icon-re">
@@ -94,6 +89,10 @@
                 <a href="#" onClick="loadContent(`main-content`, `./data/app/remote_mag`);">
                     <div class="ic">📦</div>
                     <p data-i18n="%warehouse_remote%">Magazyn</p>
+                </a>
+                <a href="#" onClick="loadContent(`main-content`, `./data/app/notes`);">
+                    <div class="ic">📝</div>
+                    <p data-i18n="%warehouse_remote%">Notes</p>
                 </a>
                 <a href="#" onClick="loadContent(`main-content`, `./data/app/config`);">
                     <div class="ic">⚙️</div>

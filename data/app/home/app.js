@@ -55,8 +55,8 @@ app = {
                     div.innerHTML = `  
             <div class="dashboard-alert ${priority}">
             <button onClick="dashboardUnreadAlert(${msg.id})" class="dashboard-alert-close">x</button>
-            <span><p class="dashboard-title">${msg.title}</p> 
-            <p> ${msg.message} <p class="dashboard-alert-time">${msg.created_at}</p></p></span>
+            <span><span class="dashboard-title">${msg.title}</span> 
+            <p> ${msg.message}</p><span class="dashboard-alert-time">${msg.created_at}</span></span>
             </div>
                     `;
                     container.appendChild(div);

@@ -1,0 +1,54 @@
+<div class="file-explorer">
+    <div class="header">
+        <div class="controls">
+            <button id="refreshBtn">🔄 Odśwież</button>
+            <div class="filter">
+                <label for="fileFilter">Filtruj pliki:</label>
+                <input type="text" id="fileFilter" placeholder="np. jpg,png,pdf">
+            </div>
+        </div>
+    </div>
+
+    <div class="current-path" id="currentPath">
+        Ścieżka: <span class="path">FILES</span>
+    </div>
+
+    <div class="tree-container">
+        <div id="loading" class="loading">⌛ Ładowanie...</div>
+        <div id="tree" class="tree"></div>
+    </div>
+
+    <div class="file-info" id="fileInfo">
+        Wybierz plik, aby zobaczyć szczegóły
+    </div>
+</div>
+
+<!-- Galeria zdjęć - ukryta na początku -->
+<div id="galleryModal" class="gallery-modal">
+    <div class="gallery-container">
+        <div class="gallery-header">
+            <h3>Podgląd</h3>
+            <button id="closeGallery" class="close-btn">✕</button>
+        </div>
+
+        <div class="gallery-main">
+            <button id="prevBtn" class="nav-btn">‹</button>
+
+            <div class="main-image-container">
+                <img id="mainImage" src="" alt="Podgląd zdjęcia">
+                <div class="image-info">
+                    <span id="imageName"></span>
+                    <span id="imageSize"></span>
+                </div>
+            </div>
+
+            <button id="nextBtn" class="nav-btn">›</button>
+        </div>
+
+        <div class="gallery-thumbnails">
+            <div id="thumbnailsContainer" class="thumbnails-container">
+                <!-- Miniaturki będą dodawane dynamicznie -->
+            </div>
+        </div>
+    </div>
+</div>
