@@ -22,7 +22,6 @@ app = {
                 }));
 
                 this.warehouseTable = new Tabulator("#ware-table", {
-                    theme: "modern",
                     height: "800px",
                     layout: "fitColumns",
                     selectable: true,

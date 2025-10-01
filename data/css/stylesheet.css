@@ -610,20 +610,10 @@ button {
 .bg-blue-500:hover{
     background-color: #0c5b7f;
 }
-.button-options{
-    border: 0px solid white;
-    background-color: rgb(74, 85, 104); 
-    color: white; 
-    border: none; 
-    padding: 10px 15px; 
-    border-radius: 6px; 
-    cursor: pointer; 
-    transition: background-color 0.2s ease 0s; 
-    font-weight: 500; white-space: nowrap;
-}
+ 
 .base-btn{
     width: 70px;
-    height: 40px;
+    height: 60px;
 }
 .ware-menu{
     margin-bottom: 10px;
@@ -1611,4 +1601,16 @@ button {
     color: #9b59b6;
     font-weight: 600;
     font-size: 0.8em;
+}
+.database-container{
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    min-height: 80vh;
+    overflow: hidden;
+    flex-direction: column;
+    flex-wrap: nowrap;
 }
